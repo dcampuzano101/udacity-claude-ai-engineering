@@ -1,0 +1,65 @@
+sequenceDiagram
+    actor Customer
+    participant System as Ticket System
+    participant Triage as Triage Agent
+    participant CRM
+    participant Tech as Technical Agent
+    participant Billing as Billing Agent
+    participant KB as KB Agent
+    participant Routing as Routing Agent
+    participant Dest as Destination
+
+    Customer->>System: Submit support ticket
+    activate System
+
+    System->>Triage: New ticket received
+    activate Triage
+
+    Triage->>CRM: Lookup customer info
+    activate CRM
+    CRM-->>Triage: Customer data, SLA tier
+    deactivate CRM
+
+    Note over Triage: Extract category, urgency,<br/>and determine handling type
+
+    par Parallel Analysis
+        Triage->>Tech: Analyze technical issue
+        activate Tech
+        and
+        Triage->>Billing: Analyze billing issue
+        activate Billing
+        and
+        Triage->>KB: Search knowledge base
+        activate KB
+    end
+
+    Note over Tech,KB: All agents work independently
+
+    Tech-->>Routing: Technical analysis result
+    deactivate Tech
+    Billing-->>Routing: Billing analysis result
+    deactivate Billing
+    KB-->>Routing: KB match or null
+    deactivate KB
+
+    Triage->>Routing: Ticket context + tier
+    deactivate Triage
+    activate Routing
+
+    Note over Routing: Evaluate all results,<br/>apply routing logic & SLA
+
+    alt High confidence solution found
+        Routing->>Dest: Auto-response email
+        Dest-->>Customer: Solution (40%)
+    else Requires human expertise
+        Routing->>Dest: Queue for L2/L3 team
+        Dest-->>Customer: Acknowledgment, in queue (55%)
+    else SLA risk detected
+        Routing->>Dest: Escalate to manager
+        Dest-->>Customer: Priority handling (5%)
+    end
+
+    deactivate Routing
+    deactivate System
+
+    Note over System,Dest: Background: SLA Escalation Agent<br/>monitors all open tickets every 5 min

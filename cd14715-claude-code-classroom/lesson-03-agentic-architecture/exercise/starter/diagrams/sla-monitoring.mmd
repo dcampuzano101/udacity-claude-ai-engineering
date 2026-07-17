@@ -1,0 +1,34 @@
+graph TB
+    Timer["<b>EVERY 5 MINUTES</b><br/>Timer trigger"]
+    SLAAgent["<b>SLA Escalation Agent</b><br/><br/><b>Model:</b> Haiku<br/>(lightweight, frequent runs)<br/><br/><b>Tools:</b><br/>- Ticket System Query<br/>- Slack/Email Alerts<br/>- Compliance Logger<br/><br/><b>Logic:</b><br/>1. Query all open tickets<br/>2. Calculate time remaining<br/>3. Check vs SLA deadline"]
+    Query["<b>Get Open Tickets</b><br/>With deadline info"]
+    Check{{"<b>Time Remaining</b><br/>vs Deadline"}}
+    Healthy["<b>HEALTHY</b><br/>Time >20% remaining<br/>No action needed"]
+    Warning["<b>WARNING</b><br/>Time <20% remaining<br/>Likely to miss SLA"]
+    Breached["<b>BREACHED</b><br/>Time exceeded<br/>SLA violated"]
+    AlertTeam["<b>Alert Team Lead</b><br/>Slack message<br/>w/ ticket context"]
+    AlertManager["<b>Alert Manager</b><br/>Email + Slack<br/>Escalate priority"]
+    LogViolation["<b>Log Violation</b><br/>Compliance records<br/>For audit trail"]
+
+    Timer --> SLAAgent
+    SLAAgent --> Query
+    Query --> Check
+    Check -->|>20% time| Healthy
+    Check -->|<20% time| Warning
+    Check -->|Exceeded| Breached
+    Warning --> AlertTeam
+    Breached --> AlertManager
+    Breached --> LogViolation
+    AlertTeam --> Healthy
+    AlertManager --> LogViolation
+
+    style Timer fill:#e3f2fd,stroke:#333,stroke-width:2px
+    style SLAAgent fill:#fff4e6,stroke:#333,stroke-width:2px
+    style Query fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style Check fill:#ffe0b2,stroke:#333,stroke-width:2px
+    style Healthy fill:#c8e6c9,stroke:#333,stroke-width:2px
+    style Warning fill:#ffccbc,stroke:#333,stroke-width:2px
+    style Breached fill:#ef5350,stroke:#333,stroke-width:2px,color:#fff
+    style AlertTeam fill:#ffccbc,stroke:#333,stroke-width:2px
+    style AlertManager fill:#ef5350,stroke:#333,stroke-width:2px,color:#fff
+    style LogViolation fill:#fce4ec,stroke:#333,stroke-width:2px

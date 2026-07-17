@@ -1,0 +1,58 @@
+flowchart TD
+    Start(["<b>START</b><br/>New ticket received"])
+    Triage["<b>TRIAGE AGENT</b><br/>Parse ticket, lookup customer<br/>Determine urgency & type"]
+    TicketData["<b>Ticket Data</b><br/>- Category<br/>- Urgency<br/>- Customer Tier<br/>- Language"]
+    TechAgent["<b>Technical Agent</b><br/>PARALLEL"]
+    BillingAgent["<b>Billing Agent</b><br/>PARALLEL"]
+    KBAgent["<b>Knowledge Base Agent</b><br/>PARALLEL"]
+    TechResult["<b>Technical Analysis</b><br/>Issue identified,<br/>solution found?"]
+    BillingResult["<b>Billing Analysis</b><br/>Account status,<br/>solution found?"]
+    KBResult["<b>KB Match</b><br/>Similar issues,<br/>existing solution?"]
+    Routing["<b>ROUTING AGENT</b><br/>Evaluate all analysis<br/>Apply SLA & rules"]
+    Decision{{"<b>Route Decision</b><br/>Can we auto-respond?"}}
+    AutoResp["<b>AUTO-RESPONSE</b><br/>Send solution email<br/>Close ticket"]
+    HumanReview{{"<b>Complex?</b><br/>Requires human?"}}
+    HumanRoute["<b>HUMAN TEAM</b><br/>Queue for specialist<br/>With full context"]
+    SLACheck{{"<b>SLA Risk?</b><br/>Close to deadline?"}}
+    Escalate["<b>ESCALATION</b><br/>Alert manager,<br/>Priority queue"]
+    Complete(["<b>END</b><br/>Ticket routed"])
+
+    Start --> Triage
+    Triage --> TicketData
+    TicketData --> TechAgent
+    TicketData --> BillingAgent
+    TicketData --> KBAgent
+    TechAgent --> TechResult
+    BillingAgent --> BillingResult
+    KBAgent --> KBResult
+    TechResult --> Routing
+    BillingResult --> Routing
+    KBResult --> Routing
+    Routing --> Decision
+    Decision -->|Yes, high confidence| AutoResp
+    Decision -->|No| HumanReview
+    HumanReview -->|Yes| SLACheck
+    SLACheck -->|Yes, <20% time| Escalate
+    SLACheck -->|No| HumanRoute
+    HumanReview -->|No escalation| HumanRoute
+    AutoResp --> Complete
+    HumanRoute --> Complete
+    Escalate --> Complete
+
+    style Start fill:#e3f2fd,stroke:#333,stroke-width:2px
+    style Triage fill:#fff4e6,stroke:#333,stroke-width:2px
+    style TicketData fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style TechAgent fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style BillingAgent fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style KBAgent fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style TechResult fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style BillingResult fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style KBResult fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style Routing fill:#fff4e6,stroke:#333,stroke-width:2px
+    style Decision fill:#ffe0b2,stroke:#333,stroke-width:2px
+    style AutoResp fill:#c8e6c9,stroke:#333,stroke-width:3px
+    style HumanReview fill:#ffe0b2,stroke:#333,stroke-width:2px
+    style HumanRoute fill:#c8e6c9,stroke:#333,stroke-width:3px
+    style SLACheck fill:#ffe0b2,stroke:#333,stroke-width:2px
+    style Escalate fill:#ffccbc,stroke:#333,stroke-width:3px
+    style Complete fill:#c8e6c9,stroke:#333,stroke-width:2px

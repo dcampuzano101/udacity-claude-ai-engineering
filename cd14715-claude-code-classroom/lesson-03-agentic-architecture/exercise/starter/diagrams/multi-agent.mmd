@@ -1,0 +1,31 @@
+graph TB
+    Ticket["<b>INCOMING TICKET</b><br/>Email/Chat/Web Form"]
+    Triage["<b>Triage Agent</b><br/><br/><b>Tools:</b><br/>- CRM Lookup<br/>- Ticket Parser<br/><br/><b>Does:</b><br/>- Extracts text<br/>- Looks up customer<br/>- Identifies urgency"]
+    Technical["<b>Technical Agent</b><br/><br/><b>Tools:</b><br/>- KB Search<br/>- Error Analysis<br/>- System Logs<br/><br/><b>Does:</b><br/>- Analyzes tech issues<br/>- Finds solutions"]
+    Billing["<b>Billing Agent</b><br/><br/><b>Tools:</b><br/>- Payment System<br/>- Invoice Lookup<br/>- Account Mgmt<br/><br/><b>Does:</b><br/>- Handles payments<br/>- Updates accounts"]
+    Knowledge["<b>Knowledge Base Agent</b><br/><br/><b>Tools:</b><br/>- KB Search<br/>- FAQ Lookup<br/>- Solution Matcher<br/><br/><b>Does:</b><br/>- Searches solutions<br/>- Finds similar issues"]
+    Routing["<b>Routing Agent</b><br/><br/><b>Tools:</b><br/>- Decision Logic<br/>- SLA Rules<br/>- Destination Mgmt<br/><br/><b>Does:</b><br/>- Evaluates all data<br/>- Routes ticket"]
+    AutoResponse["<b>AUTO-RESPONSE</b><br/>~40%<br/>Common questions answered"]
+    HumanTeam["<b>HUMAN TEAM</b><br/>~55%<br/>L2/L3 engineers or<br/>billing specialists"]
+    Escalation["<b>ESCALATION</b><br/>~5%<br/>Manager review,<br/>SLA risk"]
+
+    Ticket --> Triage
+    Triage --> Technical
+    Triage --> Billing
+    Triage --> Knowledge
+    Technical --> Routing
+    Billing --> Routing
+    Knowledge --> Routing
+    Routing --> AutoResponse
+    Routing --> HumanTeam
+    Routing --> Escalation
+
+    style Ticket fill:#e3f2fd,stroke:#333,stroke-width:2px
+    style Triage fill:#fff4e6,stroke:#333,stroke-width:2px
+    style Technical fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style Billing fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style Knowledge fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style Routing fill:#fff4e6,stroke:#333,stroke-width:2px
+    style AutoResponse fill:#c8e6c9,stroke:#333,stroke-width:3px
+    style HumanTeam fill:#c8e6c9,stroke:#333,stroke-width:3px
+    style Escalation fill:#ffccbc,stroke:#333,stroke-width:3px
