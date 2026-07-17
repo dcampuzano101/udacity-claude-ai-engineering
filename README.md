@@ -1,176 +1,143 @@
 # Udacity AI Engineering with Claude
 
-A comprehensive repository for Udacity's AI Engineering course, featuring hands-on exercises, architectural designs, and video transcripts exploring multi-agent systems and agentic architecture patterns using Claude AI.
+Personal working repository for the Udacity "AI Engineering with Claude" course. Synced between personal and work computers via git.
 
-## 📚 Course Structure
+## Status Legend
 
-### Lessons
+| Symbol | Meaning |
+|--------|---------|
+| ✅ | Complete or ready to run |
+| 🚧 | In Progress |
+| ⬜ | Not Started |
 
-- **lesson-01**: Model Selection & Classification
-- **lesson-02**: Prompt Engineering & Optimization
-- **lesson-03**: Agentic Architecture (Multi-Agent Design)
-  - Exercise: Customer Support Ticket Routing System
-  - 6 specialized agents with parallel execution
-  - Complete architectural diagrams and analysis
+## Course Progress
 
-*(Additional lessons to be added)*
+| # | Lesson | Topic | Status | Path |
+|---|--------|-------|--------|------|
+| 0️⃣ | **warm-up** | Getting Started with Your Workspace | ✅ | [`lesson-00-warm-up`](cd14715-claude-code-classroom/lesson-00-warm-up) |
+| 1️⃣ | **model-selection** | Support Ticket Classifier (Haiku/Sonnet/Opus Routing) | ✅ | [`lesson-01-model-selection`](cd14715-claude-code-classroom/lesson-01-model-selection) |
+| 2️⃣ | **extended-thinking** | Extended Thinking for Fraud Detection | ⬜ | [`lesson-02-extended-thinking`](cd14715-claude-code-classroom/lesson-02-extended-thinking) |
+| 3️⃣ | **agentic-architecture** | Multi-Agent Customer Support System | ✅ | [`lesson-03-agentic-architecture`](cd14715-claude-code-classroom/lesson-03-agentic-architecture) |
+| 4️⃣ | **claude-code-config** | Configure Claude Code for Support Ticket System | ⬜ | [`lesson-04-claude-code-config`](cd14715-claude-code-classroom/lesson-04-claude-code-config) |
+| 5️⃣ | **agent-sdk** | Contract Standardizer | ⬜ | [`lesson-05-agent-sdk`](cd14715-claude-code-classroom/lesson-05-agent-sdk) |
+| 6️⃣ | **custom-tools** | API Validator | ⬜ | [`lesson-06-custom-tools`](cd14715-claude-code-classroom/lesson-06-custom-tools) |
+| 7️⃣ | **structured-outputs** | Meeting Notes Analyzer | ⬜ | [`lesson-07-structured-outputs`](cd14715-claude-code-classroom/lesson-07-structured-outputs) |
+| 8️⃣ | **claude-skills** | JavaScript Code Reviewer | ⬜ | [`lesson-08-claude-skills`](cd14715-claude-code-classroom/lesson-08-claude-skills) |
+| 9️⃣ | **mcp-integration** | Code Quality Reviewer | ⬜ | [`lesson-09-mcp-integration`](cd14715-claude-code-classroom/lesson-09-mcp-integration) |
+| 🔟 | **multi-agent-orchestration** | Sales Opportunity Qualifier | ⬜ | [`lesson-10-multi-agent-orchestration`](cd14715-claude-code-classroom/lesson-10-multi-agent-orchestration) |
+| 1️⃣1️⃣ | **tdd-with-ai** | TDD Strategy for a Shopping Cart Module | ⬜ | [`lesson-11-tdd-with-ai`](cd14715-claude-code-classroom/lesson-11-tdd-with-ai) |
+| 1️⃣2️⃣ | **evaluating-agents** | Tip Calculator / Sentiment Analysis Evaluators | ⬜ | [`lesson-12-evaluating-agents`](cd14715-claude-code-classroom/lesson-12-evaluating-agents) |
+| 1️⃣3️⃣ | **computer-use** | Form Automation Agent | ⬜ | [`lesson-13-computer-use`](cd14715-claude-code-classroom/lesson-13-computer-use) |
+| 📦 | **project** | Enterprise Multi-Agent Code Review Orchestrator | ⬜ | [`project`](cd14715-claude-code-classroom/project) |
 
-### Video Transcripts
+## Completed Lessons
 
-- **Agentic-System-Design/**
-  - Components of Agentic Systems
-  - Perception-Reasoning-Action Loop
-  - Module Summary
+### Lesson 03 — Agentic Architecture ✅
 
-- **Design-Agent-Architectures/**
-  - Introduction to Agent Architectures
-  - Demo Transcript & Implementation
+**Multi-Agent Customer Support Ticket Routing System** — A comprehensive architecture design for intelligent ticket handling at scale (5,000+ tickets/day, <1hr enterprise SLA).
 
-## 🎯 Current Focus
+→ **Full details** in [`lesson-03-agentic-architecture/exercise/starter/ARCHITECTURE.md`](cd14715-claude-code-classroom/lesson-03-agentic-architecture/exercise/starter/ARCHITECTURE.md)
 
-### Lesson 03: Agentic Architecture - Customer Support Ticket Routing
+**Quick snapshot:**
+- 6 specialized agents (Triage, Technical, Billing, Knowledge Base, Routing, SLA Escalation)
+- Parallel execution: 8–12s processing vs 30–60s sequential
+- 4 fully rendered Mermaid diagrams (multi-agent flow, workflow, sequence, escalation logic)
+- Failure mode analysis with mitigations
 
-A multi-agent system design for intelligent customer support ticket handling, processing 5,000+ tickets/day with <1hr enterprise SLA.
+---
 
-#### Architecture Components
+## Video Transcripts
 
-**6 Specialized Agents:**
-- **Triage Agent** (Sonnet) - Entry point, CRM lookup, categorization
-- **Technical Agent** (Sonnet) - Code analysis, error logs, root cause
-- **Billing Agent** (Haiku) - Account issues, payments, credits
-- **Knowledge Base Agent** (Haiku) - Solution matching, FAQ lookup
-- **Routing Agent** (Sonnet) - Decision logic, SLA rules
-- **SLA Escalation Agent** (Haiku) - Background monitoring every 5 minutes
+Course video notes for reference:
 
-#### Key Diagrams
+### Agentic System Design
+- [`components-agentic-system.md`](video-transcripts/Agentic-System-Design/components-agentic-system.md) — Core components of agentic systems
+- [`perception-reasoning-action-loop.md`](video-transcripts/Agentic-System-Design/perception-reasoning-action-loop.md) — The PRA loop explained
+- [`module-summary.md`](video-transcripts/Agentic-System-Design/module-summary.md) — Module recap
 
-- `diagrams/multi-agent.mmd` → Multi-agent architecture with parallel execution
-- `diagrams/workflow.mmd` → Complete ticket journey and decision flows
-- `diagrams/sequence.mmd` → Interaction timeline with parallel agents
-- `diagrams/sla-monitoring.mmd` → Escalation agent background monitoring
+### Design Agent Architectures
+- [`intro.md`](video-transcripts/Design-Agent-Architectures/intro.md) — Introduction to architecture patterns
+- [`demo-transcript.md`](video-transcripts/Design-Agent-Architectures/demo-transcript.md) — Sales agent demo (single vs multi-agent)
 
-#### Performance Metrics
+---
 
-| Metric | Single-Agent | Multi-Agent |
-|--------|-------------|------------|
-| Processing Time | 30-60s | 8-12s |
-| Daily Capacity | ~2,500 | 5,000+ |
-| Auto-Resolution | ~20% | ~40% |
-| SLA Compliance | ~70% | 92-95% |
-
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
-├── README.md
+├── README.md (this file)
 ├── .gitignore
-├── cd14715-claude-code-classroom/     # Main course materials
-│   ├── lesson-01/                     # Model selection
-│   ├── lesson-02/                     # Prompt engineering
-│   ├── lesson-03/                     # Agentic architecture
-│   │   ├── demo/                      # Reference implementations
-│   │   └── exercise/
-│   │       └── starter/
-│   │           ├── ARCHITECTURE.md    # Complete design doc
-│   │           └── diagrams/          # Mermaid diagrams
-│   └── ...
-└── video-transcripts/                 # Course video notes
+├── cd14715-claude-code-classroom/          ← All course lessons
+│   ├── lesson-00-warm-up/
+│   ├── lesson-01-model-selection/
+│   ├── lesson-02-extended-thinking/
+│   ├── lesson-03-agentic-architecture/     (✅ COMPLETE)
+│   │   ├── demo/
+│   │   └── exercise/starter/
+│   │       ├── ARCHITECTURE.md             (full design doc)
+│   │       └── diagrams/                   (Mermaid + SVG)
+│   ├── lesson-04 … lesson-13/
+│   └── project/                            (capstone)
+└── video-transcripts/
     ├── Agentic-System-Design/
     └── Design-Agent-Architectures/
 ```
 
-## 🚀 Quick Start
+Each lesson typically contains:
+- `demo/` — Reference implementation
+- `exercise/starter/` — Template to complete
+- `exercise/solution/` — Full solution for reference
 
-### View Architecture Documentation
+---
 
-```bash
-# Open the lesson-03 architecture document
-cd cd14715-claude-code-classroom/lesson-03-agentic-architecture/exercise/starter
-cat ARCHITECTURE.md
+## Workflow: Syncing Between Computers
 
-# View rendered diagrams (SVG format)
-open diagrams/multi-agent.svg
-open diagrams/workflow.svg
-open diagrams/sequence.svg
-open diagrams/sla-monitoring.svg
-```
+### Before Starting Work
 
-### Render Mermaid Diagrams
-
-If you have `mmdc` installed:
+Always pull latest changes:
 
 ```bash
-mmdc -i diagrams/multi-agent.mmd -o diagrams/multi-agent.svg
-mmdc -i diagrams/workflow.mmd -o diagrams/workflow.svg
-mmdc -i diagrams/sequence.mmd -o diagrams/sequence.svg
-mmdc -i diagrams/sla-monitoring.mmd -o diagrams/sla-monitoring.svg
-```
-
-Or use [Mermaid Live Editor](https://mermaid.live) to visualize `.mmd` files online.
-
-## 📖 Key Learnings
-
-### 1. Parallelization Wins for High-Volume Systems
-- Sequential processing creates bottlenecks
-- Parallel agents reduce 30-60s → 8-12s processing time
-- Required for 5,000+/day volume with <1hr SLA
-
-### 2. Agent Specialization Improves Quality & Cost
-- Haiku (lightweight) for simple tasks: billing, FAQ matching
-- Sonnet (capable) for complex reasoning: code analysis, routing
-- Reduces costs by ~40% while maintaining quality
-
-### 3. Background Agents Provide SLA Visibility
-- Separate escalation agent monitors deadlines every 5 minutes
-- Proactive alerting vs reactive firefighting
-- Know which tickets are at risk BEFORE deadline
-
-### 4. Failure Modes Cascade in Multi-Agent Systems
-- One agent timeout affects all others
-- Plan degraded modes: timeouts, fallbacks, circuit breakers
-- Test failure scenarios as seriously as happy paths
-
-## 🛠️ Technologies Used
-
-- **Claude AI** (Sonnet, Haiku) - Multi-agent orchestration
-- **Mermaid** - Architecture diagrams and flowcharts
-- **Git** - Version control
-- **TypeScript** - Exercise implementations (where applicable)
-
-## 📝 Exercise Structure
-
-Each lesson includes:
-- **README.md** - Exercise overview and instructions
-- **starter/** - Template code to complete
-- **solution/** - Reference implementation
-- **ARCHITECTURE.md** - Design documentation (when applicable)
-
-## 🔄 Workflow for Syncing Between Computers
-
-**Before starting work:**
-```bash
+cd ~/Documents/current_projects/udacity-ai-engineering-with-Claude
 git pull origin main
 ```
 
-**After completing work:**
+### After Completing Work
+
+Commit and push your changes:
+
 ```bash
 git add .
 git commit -m "lesson-XX: description of changes"
 git push origin main
 ```
 
-## 📚 References
+### Example Flow
 
-- [Claude API Documentation](https://claude.ai/docs)
-- [Mermaid Diagram Syntax](https://mermaid.js.org)
-- [Udacity AI Engineering Program](https://www.udacity.com)
+**Personal computer:**
+```bash
+git pull                                  # Get any work from the other computer
+# ... work on lesson-05 ...
+git add .
+git commit -m "lesson-05: complete agent-sdk contract standardizer exercise"
+git push origin main
+```
 
-## 📄 License
-
-Course materials from Udacity. Personal exercises and notes.
+**Work computer (next day):**
+```bash
+git pull                                  # Gets the lesson-05 work from personal computer
+# ... continue with lesson-06 or other tasks ...
+```
 
 ---
 
-**Last Updated:** July 17, 2026  
-**Current Focus:** Lesson 03 - Agentic Architecture (Completed)  
-**Next:** Lesson 04 - Specialized Agent Patterns
+## Quick Links
+
+- 📖 [Udacity AI Engineering Program](https://www.udacity.com)
+- 🤖 [Claude API Docs](https://claude.ai/docs)
+- 📊 [Mermaid Diagram Syntax](https://mermaid.js.org)
+- 🔧 [Claude Code CLI](https://github.com/anthropics/claude-code)
+
+---
+
+**Repository:** https://github.com/dcampuzano101/udacity-claude-ai-engineering  
+**Last Updated:** July 17, 2026
